@@ -16,7 +16,7 @@ def test_planners():
     print("[Test] Evaluating satisficing and optimal planners\n")
 
     for type in ["satisficing", "optimal"]:
-        for planner_name, planner in planners.get_planner_type(type):
+        for planner_name, planner in planners.get_planners_of_type(type):
             for env_name in env_names:
                 
                 print("[Test] evaluating {} on {}".format(planner_name, env_name))

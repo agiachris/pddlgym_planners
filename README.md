@@ -4,7 +4,7 @@
 
 This is a lightweight Python interface for using off-the-shelf classical planners like [FastForward](https://fai.cs.uni-saarland.de/hoffmann/ff.html) and [FastDownward](http://www.fast-downward.org/ObtainingAndRunningFastDownward) with [PDDLGym](https://github.com/tomsilver/pddlgym).
 
-**Extensions to this library** have been made by [Mohamed Khodeir](https://github.com/Khodeir) and [Christopher Agia](https://agiachris.github.io/) to support a wider range of satisficing and optimal symbolic planners encapsulated in a pip-installable package.
+**Extensions to this library have been made by [Mohamed Khodeir](https://github.com/Khodeir) and [Christopher Agia](https://agiachris.github.io/) to support a broader range of satisficing and optimal symbolic planners encapsulated in a pip-installable package. Correspondance: <m.khodeir@mail.utoronto.ca> and <cagia@stanford.edu>.**
 
 ## System Requirements
 
@@ -50,7 +50,8 @@ print("Statistics:", lama_first_planner.get_statistics())
 
 ## Extended Usage
 
-Upon importing this package in your python script, you'll simple access to both satisficing and optimal planners through the `pddlgym_planners.PlannerHandler` object; a dictionary returning a planner (after auto-installing it) given the specified planner key name. We provide an example below:
+Upon importing this package in your python script, you'll have easy access to both satisficing and optimal planners through the `pddlgym_planners.PlannerHandler` object; a dictionary hashing a planner name to its corresponding [PDDLPlanner](https://github.com/agiachris/pddlgym_planners/blob/master/pddlgym_planners/pddl_planner.py#L17) object. You may also directly import a planner with `get_planner` should you know its name and alias. All necessary dependencies are auto-installed for planners being used the first time. 
+
 
 ```python 
 # pyexample.py script
@@ -60,9 +61,10 @@ import pddlgym_planners
 
 # Instantiate planner handler (dict)
 planners = pddlgym_planners.PlannerHandler()
+print(planners.keys())      # [optional] check for short-form planner names (keys)
 
 # Planning with Cerberus-agl (satisficing)
-cerberus_planner = planners["Cerberus-agl"]
+cerberus_planner = planners["Cerberus-seq-agl"]
 env = pddlgym.make("PDDLEnvBlocks-v0")
 state, _ = env.reset()
 print("Plan:", cerberus_planner(env.domain, state))
@@ -70,6 +72,17 @@ print("Statistics:", cerberus_planner.get_statistics())
 
 # Planning with Delfi (optimal)
 delfi_planner = planners["Delfi"]
+env = pddlgym.make("PDDLEnvBlocks-v0")
+state, _ = env.reset()
+print("Plan:", delfi_planner(env.domain, state))
+print("Statistics:", delfi_planner.get_statistics())
+
+# Can also directly access planners with get_planner
+planner_data = {
+    "name": "FD", 
+    "kwargs": {"alias_flag": "--alias seq-opt-lmcut"}
+}
+fd_planner = pddlgym_planners.get_planner(planner_data["name"], **planner_data["kwargs"])
 env = pddlgym.make("PDDLEnvBlocks-v0")
 state, _ = env.reset()
 print("Plan:", delfi_planner(env.domain, state))
