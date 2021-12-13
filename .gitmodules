@@ -1,6 +1,7 @@
 [submodule "SatPlan"]
 	path = SatPlan
 	url = https://github.com/Khodeir/SatPlan.git
+	ignore = dirty
 [submodule "adl2strips"]
 	path = adl2strips
 	url = https://github.com/pucrs-automated-planning/adl2strips.git
