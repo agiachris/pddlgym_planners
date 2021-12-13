@@ -1,13 +1,23 @@
 import setuptools
 
+with open("README.md", "r", encoding="utf-8") as fh:
+        long_description = fh.read()
+
 setuptools.setup(
     name='pddlgym_planners',
-    version='0.1.0',    
-    description='Symbolic planning support with Python',
-    url='https://github.com/agiachris/pddlgym_planners',
+    version='0.0.1',    
     author='Tom Silver, Rohan Chitnis, Mohamed Khodeir, Christopher Agia',
     author_email='cagia@stanford.edu',
-    packages=setuptools.find_packages(),
-    classifiers=["Programming Language :: Python :: 3"],
-    python_requires='>=3.8',
+    description='Symbolic planning support in Python',
+    long_description=long_description,
+    long_description_content_type="text/markdown",
+    url='https://github.com/agiachris/pddlgym_planners',
+    classifiers=[
+        "Programming Language :: Python :: 3",
+        "License :: OSI Approved :: MIT License",
+        "Operating System :: OS Independent",
+    ],
+    package_dir={"": "pddlgym_planners"},
+    packages=setuptools.find_packages(where="pddlgym_planners"),
+    python_requires='>=3.6s',
 )
