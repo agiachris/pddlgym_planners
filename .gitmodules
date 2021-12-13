@@ -4,3 +4,6 @@
 [submodule "adl2strips"]
 	path = adl2strips
 	url = https://github.com/pucrs-automated-planning/adl2strips.git
+[submodule "tarski"]
+	path = tarski
+	url = https://github.com/aig-upf/tarski.git

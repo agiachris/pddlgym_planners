@@ -1,28 +1,38 @@
-"""Tests that planners run and succeed
-"""
-
 import pddlgym
-from ff import FF  # FastForward
-from fd import FD  # FastDownward
+
+from __init__ import PlannerHandler
+from ff import FF
+from fd import FD
+from planner import PlanningFailure
 
 
 def test_planners():
     """Make sure that the plans found by the planners
     succeed in the environments
     """
-    planners = [FF(), FD(), FD(alias_flag="--alias lama-first")]
+    planners = PlannerHandler()
     env_names = ["PDDLEnvBlocks-v0", "PDDLEnvBlocks_operator_actions-v0"]
 
-    for planner in planners:
-        for env_name in env_names:
-            env = pddlgym.make(env_name)
-            state, _ = env.reset()
-            plan = planner(env.domain, state)
-            for act in plan:
-                _, reward, done, _ = env.step(act)
-            assert reward == 1.
-            assert done
+    print("[Test] Evaluating satisficing and optimal planners\n")
 
+    for type in ["satisficing", "optimal"]:
+        for planner_name, planner in planners.get_planner_type(type):
+            for env_name in env_names:
+                
+                print("[Test] evaluating {} on {}".format(planner_name, env_name))
+                env = pddlgym.make(env_name)
+                state, _ = env.reset()
+
+                try:
+                    plan = planner(env.domain, state)
+                    for act in plan:
+                        _, reward, done, _ = env.step(act)
+                    assert reward == 1.
+                    assert done
+                    print("\t{} succeeded".format(planner_name))
+                except PlanningFailure:
+                    print("\t{} failed".format(planner_name))
+                
 
 def test_readme_example():
     """Make sure that the README example runs
@@ -51,4 +61,4 @@ def test_readme_example():
 
 if __name__ == "__main__":
     test_planners()
-    test_readme_example()
+    # test_readme_example()

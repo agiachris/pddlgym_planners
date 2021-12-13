@@ -1,3 +1,6 @@
+from copy import deepcopy
+import numpy as np
+
 from tarski.grounding import LPGroundingStrategy
 from tarski.grounding.errors import ReachabilityLPUnsolvable
 from tarski.grounding.ops import approximate_symbol_fluency
@@ -5,12 +8,13 @@ from tarski.syntax.transform.action_grounding import ground_schema,  ground_sche
 from tarski.search.operations import is_applicable, progress
 from tarski.evaluators.simple import evaluate
 from tarski.model import wrap_tuple
-from copy import deepcopy
 from tarski.io import PDDLReader
 from tarski.fstrips.manipulation.simplify import Simplify
-import numpy as np
 from tarski.syntax import CompoundFormula, Connective, Atom
+
+
 TESTING = False
+
 
 class PddlProblem:
     __action_bindings = None

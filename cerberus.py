@@ -6,10 +6,10 @@ import re
 import os
 import sys
 import subprocess
-import tempfile
+import numpy as np
+
 from pddl_planner import PDDLPlanner
 from planner import PlanningFailure
-import numpy as np
 from utils import FilesInCommonTempDirectory
 
 
@@ -36,7 +36,6 @@ class Cerberus(PDDLPlanner):
     def plan_from_pddl(self, dom_file, prob_file, horizon=np.inf, timeout=10, remove_files=False):
         with FilesInCommonTempDirectory(dom_file, prob_file) as (dom_file, prob_file):
             return super().plan_from_pddl(dom_file, prob_file, horizon=horizon, timeout=timeout, remove_files=remove_files)
-
 
     def _get_cmd_str(self, dom_file, prob_file, timeout):
         timeout_cmd = "gtimeout" if sys.platform == "darwin" else "timeout"

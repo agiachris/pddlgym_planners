@@ -1,6 +1,6 @@
 
-from pddlgym_planners.mcts.algorithm import Root, plan_mcts
-from pddlgym_planners.mcts.problem import PddlProblem
+from mcts.algorithm import Root, plan_mcts
+from mcts.problem import PddlProblem
 import time
 import cProfile, pstats, io
 from pstats import SortKey

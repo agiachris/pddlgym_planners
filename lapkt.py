@@ -6,10 +6,10 @@ import re
 import os
 import sys
 import subprocess
-import tempfile
+import numpy as np
+
 from pddl_planner import PDDLPlanner
 from planner import PlanningFailure
-import numpy as np
 from utils import FilesInCommonTempDirectory
 
 

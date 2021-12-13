@@ -4,7 +4,6 @@ import tempfile
 import shutil
 import numpy as np
 
-from adl2strips import ADL2Strips
 from mcts.problem import PddlProblem
 from mcts.algorithm import Root, plan_mcts
 from mcts.helpers import branching_factor
@@ -33,6 +32,7 @@ class FilesInCommonTempDirectory:
 
 
 def compute_ground_problem_size(domfile, probfile):
+    from adl2strips import ADL2Strips
     with ADL2Strips(domfile, probfile) as (domfile, _):
         with open(domfile, 'r') as f:
             grounded_dom = f.read()
