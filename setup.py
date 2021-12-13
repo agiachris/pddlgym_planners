@@ -19,5 +19,5 @@ setuptools.setup(
     ],
     package_dir={"": "pddlgym_planners"},
     packages=setuptools.find_packages(where="pddlgym_planners"),
-    python_requires='>=3.6s',
+    python_requires='>=3.6',
 )
