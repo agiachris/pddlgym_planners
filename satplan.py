@@ -1,7 +1,3 @@
-"""SATPLAN
-https://www.cs.rochester.edu/u/kautz/satplan/
-"""
-
 import re
 import os
 import sys
@@ -18,9 +14,11 @@ MEMORY = 10_000_000_000 # 10G
 
 
 class SATPlan(PDDLPlanner):
-    """Fast-downward planner.
-    """
+
     def __init__(self):
+        """A wrapper for SatPlan, https://www.cs.rochester.edu/u/kautz/satplan/.
+        GitHub repository: https://github.com/Khodeir/SatPlan.git
+        """
         super().__init__()
         self._top_dir = os.path.dirname(os.path.realpath(__file__))
         self._satplan_path = os.path.join(self._top_dir, "SatPlan")

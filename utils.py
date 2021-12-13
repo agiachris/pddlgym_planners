@@ -10,23 +10,31 @@ from mcts.helpers import branching_factor
 
 
 class FilesInCommonTempDirectory:
+
     def __init__(self, *file_paths):
+        """Temporary directory for storing related temporary files.
+        Typically used to store ADL and corresponding STRIPS translations.
+        """
         self.file_paths = file_paths
-        self.__create_temp_dir()
+        self.create_temp_dir()
+    
     def cleanup(self):
-        if self.__tmpdir is not None:
-            self.__tmpdir.cleanup()
-    def __create_temp_dir(self):
-        self.__tmpdir = tempfile.TemporaryDirectory()
-        self.dirname = self.__tmpdir.name
+        if self.tmpdir is not None:
+            self.tmpdir.cleanup()
+    
+    def create_temp_dir(self):
+        self.tmpdir = tempfile.TemporaryDirectory()
+        self.dirname = self.tmpdir.name
         new_fpaths = []
         for fpath in self.file_paths:
             new_fpath = os.path.join(self.dirname, os.path.basename(fpath))
             shutil.copyfile(fpath, new_fpath)
             new_fpaths.append(new_fpath)
         self.new_fpaths = new_fpaths
+    
     def __enter__(self):
         return self.new_fpaths
+    
     def __exit__(self, type, value, traceback):
         self.cleanup()
 

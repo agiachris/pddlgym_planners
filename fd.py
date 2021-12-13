@@ -1,12 +1,9 @@
-"""Fast-downward planner.
-http://www.fast-downward.org/ObtainingAndRunningFastDownward
-"""
-
 import re
 import os
 import sys
 import subprocess
 import tempfile
+
 from pddl_planner import PDDLPlanner
 from planner import PlanningFailure
 
@@ -15,9 +12,11 @@ FD_URL = "https://github.com/ronuchit/downward.git"
 
 
 class FD(PDDLPlanner):
-    """Fast-downward planner.
-    """
+
     def __init__(self, alias_flag="--alias seq-opt-lmcut", final_flags=""):
+        """A wrapper for the Fast-downward planner.
+        Source code: http://www.fast-downward.org/ObtainingAndRunningFastDownward
+        """
         super().__init__()
         dirname = os.path.dirname(os.path.realpath(__file__))
         self._exec = os.path.join(dirname, "FD/fast-downward.py")

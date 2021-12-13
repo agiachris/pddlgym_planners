@@ -1,10 +1,7 @@
-"""Fast-forward planner.
-https://fai.cs.uni-saarland.de/hoffmann/ff.html
-"""
-
 import re
 import os
 import sys
+
 from pddl_planner import PDDLPlanner
 from planner import PlanningFailure
 
@@ -14,9 +11,11 @@ FF_MAC_URL = "https://github.com/ronuchit/FF.git"
 
 
 class FF(PDDLPlanner):
-    """Fast-forward planner.
-    """
+    
     def __init__(self):
+        """A wrapper for the Fast-forward planner.
+        GitHub repository: "https://github.com/ronuchit/FF.git"
+        """
         super().__init__()
         dirname = os.path.dirname(os.path.realpath(__file__))
         self._exec = os.path.join(dirname, "FF-v2.3/ff")

@@ -1,11 +1,8 @@
-"""Correa et al. lifted planner.
-https://ai.dmi.unibas.ch/papers/correa-et-al-icaps2020.pdf
-"""
-
 import os
 import re
 import sys
 import tempfile
+
 from pddl_planner import PDDLPlanner
 from planner import PlanningFailure
 
@@ -14,7 +11,8 @@ URL = "git@github.mit.edu:ronuchit/correa-lifted-planner-icaps-2020.git"
 
 
 class Lifted(PDDLPlanner):
-    """Lifted planner.
+    """A wrapper for Correa et al. lifted planner, https://ai.dmi.unibas.ch/papers/correa-et-al-icaps2020.pdf.
+    Github repository: git@github.mit.edu:ronuchit/correa-lifted-planner-icaps-2020.git
     """
     def __init__(self):
         super().__init__()

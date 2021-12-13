@@ -1,7 +1,3 @@
-"""LAPKT-BFWS
-https://github.com/nirlipo/BFWS-public
-"""
-
 import re
 import os
 import sys
@@ -17,7 +13,11 @@ DOCKER_IMAGE = 'khodeir/bfws:latest'
 
 
 class LAPKTBFWS(PDDLPlanner):
+
     def __init__(self):
+        """A wrapped for the LAPKT-BFWS planner.
+        GitHub repository: https://github.com/nirlipo/BFWS-public
+        """
         super().__init__()
         print("Instantiating LAPKT-BFWS")
         self.install_delfi()

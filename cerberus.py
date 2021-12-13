@@ -1,7 +1,3 @@
-"""Cerberus
-https://github.com/ctpelok77/fd-red-black-postipc2018
-"""
-
 import re
 import os
 import sys
@@ -23,7 +19,11 @@ ALIASES = [
 
 
 class Cerberus(PDDLPlanner):
+
     def __init__(self, alias=ALIASES[0]):
+        """A wrapper for the Cerberus planner.
+        GitHub repository: https://github.com/ctpelok77/fd-red-black-postipc2018
+        """
         super().__init__()
         print(f"Instantiating Cerberus with --alias {alias}")
         assert alias in ALIASES, f"Expected alias in {ALIASES}"

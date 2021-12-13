@@ -5,11 +5,12 @@ import subprocess
 from utils import FilesInCommonTempDirectory
 
 
-ADL_URL = "https://github.com/pucrs-automated-planning/adl2strips.git"
-
-
 class ADL2Strips:
+
     def __init__(self, domain_filename, problem_filename, timeout=10):
+        """A simple translation class from ADL to Strips DSLs, based on the below repository.
+        GitHub Repository: https://github.com/pucrs-automated-planning/adl2strips.git
+        """
         self.domain_filename = domain_filename
         self.problem_filename = problem_filename
         self.timeout = timeout
@@ -18,10 +19,15 @@ class ADL2Strips:
         self.exec_path = os.path.join(self.submodule_path, "ff")
         if not os.path.exists(self.exec_path):
             self.install_adl2strips()
-
         self.tmpdir = None
 
+    def install_adl2strips(self):
+        os.system("cd {} && make && cd -".format(self.submodule_path))
+        assert os.path.exists(self.exec_path)
+
     def __enter__(self):
+        """Open ADL domain, problem files as STRIPS.
+        """
         self.tmpdir = FilesInCommonTempDirectory(self.domain_filename, self.problem_filename)
         domain_fpath, problem_fpath = self.tmpdir.file_paths
         tmpdirname = self.tmpdir.dirname
@@ -35,9 +41,7 @@ class ADL2Strips:
         return translated_domfile_path, translated_probfile_path
 
     def __exit__(self, type, value, traceback):
+        """Clean up temporary directory and files within.
+        """
         if self.tmpdir is not None:
             self.tmpdir.cleanup()
-
-    def install_adl2strips(self):
-        os.system("cd {} && make && cd -".format(self.submodule_path))
-        assert os.path.exists(self.exec_path)

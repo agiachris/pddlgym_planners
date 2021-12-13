@@ -1,12 +1,8 @@
-"""Delfi
-https://bitbucket.org/ipc2018-classical/team23/src/ipc-2018-seq-opt/
-"""
-
 import re
 import os
 import sys
 import subprocess
-import tempfile
+
 from pddl_planner import PDDLPlanner
 from planner import PlanningFailure
 import numpy as np
@@ -17,7 +13,12 @@ DOCKER_IMAGE = 'khodeir/planutils-taskography:latest'
 
 
 class Delfi(PDDLPlanner):
+
     def __init__(self):
+        """A wrapper for the Delfi planner.
+        Source code: https://bitbucket.org/ipc2018-classical/team23/src/ipc-2018-seq-opt/
+        """
+
         super().__init__()
         print("Instantiating Delfi")
         self.install_delfi()

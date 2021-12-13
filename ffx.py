@@ -1,7 +1,3 @@
-"""Fast-forward planner.
-https://fai.cs.uni-saarland.de/hoffmann/ff.html
-"""
-
 import re
 import os
 import sys
@@ -14,7 +10,8 @@ FF_MAC_URL = "https://github.com/ronuchit/FF.git"
 
 
 class FFX(PDDLPlanner):
-    """Fast-forward planner.
+    """A wrapper for the Fast-forward planner (X).
+    Source code: https://fai.cs.uni-saarland.de/hoffmann/ff/FF-X.tgz
     """
     def __init__(self):
         super().__init__()

@@ -1,15 +1,11 @@
-"""DecStar
-https://bitbucket.org/ipc2018-classical/team2/src/master/
-"""
-
 import re
 import os
 import sys
 import subprocess
-import tempfile
+import numpy as np
+
 from pddl_planner import PDDLPlanner
 from planner import PlanningFailure
-import numpy as np
 from utils import FilesInCommonTempDirectory
 
 
@@ -24,6 +20,9 @@ ALIASES = {
 
 class DecStar(PDDLPlanner):
     def __init__(self, alias):
+        """A wrapper for the DecStar planner.
+        Source code: https://bitbucket.org/ipc2018-classical/team2/src/master/
+        """
         super().__init__()
         print(f"Instantiating DecStar with --alias {alias}")
         assert alias in ALIASES, f"Expected alias in {ALIASES}"
