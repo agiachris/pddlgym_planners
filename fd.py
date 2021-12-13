@@ -7,8 +7,9 @@ import os
 import sys
 import subprocess
 import tempfile
-from pddlgym_planners.pddl_planner import PDDLPlanner
-from pddlgym_planners.planner import PlanningFailure
+from pddl_planner import PDDLPlanner
+from planner import PlanningFailure
+
 
 FD_URL = "https://github.com/ronuchit/downward.git"
 

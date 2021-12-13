@@ -6,8 +6,9 @@ import os
 import re
 import sys
 import tempfile
-from pddlgym_planners.pddl_planner import PDDLPlanner
-from pddlgym_planners.planner import PlanningFailure
+from pddl_planner import PDDLPlanner
+from planner import PlanningFailure
+
 
 URL = "git@github.mit.edu:ronuchit/correa-lifted-planner-icaps-2020.git"
 

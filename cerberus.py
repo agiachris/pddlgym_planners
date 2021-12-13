@@ -7,10 +7,11 @@ import os
 import sys
 import subprocess
 import tempfile
-from pddlgym_planners.pddl_planner import PDDLPlanner
-from pddlgym_planners.planner import PlanningFailure
+from pddl_planner import PDDLPlanner
+from planner import PlanningFailure
 import numpy as np
 from utils import FilesInCommonTempDirectory
+
 
 DOCKER_IMAGE = 'khodeir/planutils-taskography:latest'
 ALIASES = [
@@ -19,6 +20,7 @@ ALIASES = [
     "seq-agl-cerberus-gl-2018", # dag greedy level
     "seq-sat-cerberus-gl-2018",
 ]
+
 
 class Cerberus(PDDLPlanner):
     def __init__(self, alias=ALIASES[0]):

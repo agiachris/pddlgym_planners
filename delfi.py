@@ -7,12 +7,15 @@ import os
 import sys
 import subprocess
 import tempfile
-from pddlgym_planners.pddl_planner import PDDLPlanner
-from pddlgym_planners.planner import PlanningFailure
+from pddl_planner import PDDLPlanner
+from planner import PlanningFailure
 import numpy as np
 from utils import FilesInCommonTempDirectory
 
+
 DOCKER_IMAGE = 'khodeir/planutils-taskography:latest'
+
+
 class Delfi(PDDLPlanner):
     def __init__(self):
         super().__init__()

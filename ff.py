@@ -5,8 +5,9 @@ https://fai.cs.uni-saarland.de/hoffmann/ff.html
 import re
 import os
 import sys
-from pddlgym_planners.pddl_planner import PDDLPlanner
-from pddlgym_planners.planner import PlanningFailure
+from pddl_planner import PDDLPlanner
+from planner import PlanningFailure
+
 
 FF_URL = "https://fai.cs.uni-saarland.de/hoffmann/ff/FF-v2.3.tgz"
 FF_MAC_URL = "https://github.com/ronuchit/FF.git"

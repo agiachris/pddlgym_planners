@@ -6,14 +6,17 @@ import re
 import os
 import sys
 import subprocess
-import tempfile
-from pddlgym_planners.pddl_planner import PDDLPlanner
-from pddlgym_planners.planner import PlanningFailure
-from utils import ADL2Strips
 import numpy as np
+
+from pddl_planner import PDDLPlanner
+from planner import PlanningFailure
+from adl2strips import ADL2Strips
+
 
 SATPLAN_REPO = "https://github.com/Khodeir/SatPlan.git"
 MEMORY = 10_000_000_000 # 10G
+
+
 class SATPlan(PDDLPlanner):
     """Fast-downward planner.
     """
@@ -52,8 +55,6 @@ class SATPlan(PDDLPlanner):
             raise PlanningFailure(f"Plan not found with SatPlan! Error: {output}")
 
     def _install_satplan(self):
-        # subprocess.check_output(f'''git clone {SATPLAN_REPO} {self._satplan_path} && \
-        #      cd {self._satplan_path} && mkdir bin && make && cd -''', shell=True)
         subprocess.check_output(f'cd {self._satplan_path} && mkdir bin && make && cd -', shell=True)
         subprocess.check_output(f'cd {self._satplan_path} && make install && cd -', shell=True, env=dict(HOME=self._satplan_path))
         assert os.path.exists(self._exec)

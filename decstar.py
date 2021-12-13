@@ -7,10 +7,11 @@ import os
 import sys
 import subprocess
 import tempfile
-from pddlgym_planners.pddl_planner import PDDLPlanner
-from pddlgym_planners.planner import PlanningFailure
+from pddl_planner import PDDLPlanner
+from planner import PlanningFailure
 import numpy as np
 from utils import FilesInCommonTempDirectory
+
 
 DOCKER_IMAGE = 'khodeir/planutils-taskography:latest'
 ALIASES = {
@@ -19,6 +20,7 @@ ALIASES = {
     "opt-decoupled": "--decoupling 'fork(search_type=asda,pruning=cost_frontier(irrelevance=TRANSITIONS),max_leaf_size=10000000)' --search 'astar(lmcut,pruning_heuristic=lmcut(search_type=STAR),pruning=stubborn_sets_decoupled(min_pruning_ratio=0.2,special_case_optimizations=true))'",
     "opt-decoupled-fallback": "--decoupling 'portfolio(fallback_on_abstain=false,overwrite_options=true,choose_max_leaves=true,factorings=[fork(search_type=asda,max_leaf_size=10000000),ifork(max_leaf_size=10000000),incarcs(max_leaf_size=1000000)])' --search 'astar(lmcut,pruning_heuristic=lmcut(search_type=STAR),pruning=stubborn_sets_decoupled(min_pruning_ratio=0.2,special_case_optimizations=true,use_single_var_ifork_optimization=true),symmetry=symmetry_state_pruning(lex_prices=true,lex_num_states=false,lex_goal_cost=false))'", 
 }
+
 
 class DecStar(PDDLPlanner):
     def __init__(self, alias):

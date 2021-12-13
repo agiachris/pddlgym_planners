@@ -2,8 +2,9 @@
 """
 
 import pddlgym
-from pddlgym_planners.ff import FF  # FastForward
-from pddlgym_planners.fd import FD  # FastDownward
+from ff import FF  # FastForward
+from fd import FD  # FastDownward
+
 
 def test_planners():
     """Make sure that the plans found by the planners
@@ -21,6 +22,7 @@ def test_planners():
                 _, reward, done, _ = env.step(act)
             assert reward == 1.
             assert done
+
 
 def test_readme_example():
     """Make sure that the README example runs

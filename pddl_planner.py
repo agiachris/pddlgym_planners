@@ -10,7 +10,7 @@ import numpy as np
 from pddlgym.spaces import LiteralSpace
 from pddlgym.utils import nostdout
 from pddlgym.parser import parse_plan_step, PDDLProblemParser
-from pddlgym_planners.planner import Planner, PlanningTimeout, PlanningFailure
+from planner import Planner, PlanningTimeout, PlanningFailure
 
 
 class PDDLPlanner(Planner):
