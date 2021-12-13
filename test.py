@@ -1,9 +1,9 @@
 import pddlgym
 
-from __init__ import PlannerHandler
-from ff import FF
-from fd import FD
-from planner import PlanningFailure
+from pddlgym_planners import PlannerHandler
+from pddlgym_planners.ff import FF
+from pddlgym_planners.fd import FD
+from pddlgym_planners.planner import PlanningFailure
 
 
 def test_planners():
