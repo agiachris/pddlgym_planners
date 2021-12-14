@@ -16,7 +16,7 @@ This repository has been mostly tested on MacOS Mojave and Catalina with Python 
 2. Install docker.
 3. Clone this repository. `git clone https://github.com/agiachris/pddlgym_planners.git && cd pddlgym_planners`.
 4. (option a) Create a virtual env, e.g., with conda: `conda env create -f environment.yaml`.
-5. (option b) Install [PDDLGym] https://github.com/tomsilver/pddlgym. Then `pip install pddlgym_planners/tarski`.
+5. (option b) Install [PDDLGym](https://github.com/tomsilver/pddlgym) and `pip install pddlgym_planners/tarski`.
 5. Install this repository; `pip install .`.
 
 ## Example Usage
