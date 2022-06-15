@@ -87,8 +87,8 @@ planner_data = {
 fd_planner = pddlgym_planners.get_planner(planner_data["name"], **planner_data["kwargs"])
 env = pddlgym.make("PDDLEnvBlocks-v0")
 state, _ = env.reset()
-print("Plan:", delfi_planner(env.domain, state))
-print("Statistics:", delfi_planner.get_statistics())
+print("Plan:", fd_planner(env.domain, state))
+print("Statistics:", fd_planner.get_statistics())
 ```
 
 Please refer to [`pddlgym_planners/__init__.py`](https://github.com/agiachris/pddlgym_planners/blob/master/pddlgym_planners/__init__.py) for the names of possible planners to choose from. Additional samples are provided in [`test.py`](https://github.com/agiachris/pddlgym_planners/blob/master/test.py).
