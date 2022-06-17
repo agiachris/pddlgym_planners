@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
         long_description = fh.read()
 
 install_requires = [
-    "gym>=0.21.0",
+    "gym==0.21.0",
     "imageio>=2.13.3",
     "kiwisolver>=1.3.1",
     "matplotlib>=3.3.4",
