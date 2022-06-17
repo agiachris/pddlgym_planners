@@ -1,7 +1,25 @@
 import setuptools
+from pathlib import Path
 
 with open("README.md", "r", encoding="utf-8") as fh:
         long_description = fh.read()
+
+install_requires = [
+    "gym>=0.21.0",
+    "imageio>=2.13.3",
+    "kiwisolver>=1.3.1",
+    "matplotlib>=3.3.4",
+    "networkx>=2.5.1",
+    "numpy>=1.19.5",
+    "Pillow>=8.4.0",
+    "pipreq>=0.4",
+    "pyparsing>=3.0.6",
+    "PyWavelets>=1.1.1",
+    "scikit-image>=0.17.2",
+    "scipy>=1.5.4",
+    "pddlgym>=0.0.4"
+    f'tarski @ file://localhost/{Path(__file__).parent}/pddlgym_planners/tarski',
+]
 
 setuptools.setup(
     name='pddlgym_planners',
@@ -19,4 +37,5 @@ setuptools.setup(
     ],
     packages=setuptools.find_packages(),
     python_requires='>=3.6',
+    install_requires=install_requires
 )
