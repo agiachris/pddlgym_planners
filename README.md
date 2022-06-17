@@ -19,7 +19,7 @@ We recommend creating a virtual environment, e.g. with [venv](https://docs.pytho
 # if on macOS
 brew install coreutils 
 # clone and install package
-git clone https://github.com/agiachris/pddlgym_planners.git
+git clone https://github.com/agiachris/pddlgym_planners.git --recurse-submodules
 cd ./pddlgym_planners && pip install .
 # if your virtual env does not have pddlgym
 pip install -r requirements.txt
