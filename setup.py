@@ -17,7 +17,6 @@ install_requires = [
     "PyWavelets>=1.1.1",
     "scikit-image>=0.17.2",
     "scipy>=1.5.4",
-    "pddlgym>=0.0.4"
     f'tarski @ file://localhost/{Path(__file__).parent}/pddlgym_planners/tarski',
 ]
 

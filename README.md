@@ -13,12 +13,17 @@ This library is **under development** by [Tom Silver](http://web.mit.edu/tslvr/w
 This repository has been mostly tested on MacOS Mojave and Catalina with Python 3.6. We would like to make it accessible on more systems; please let us know if you try another and run into any issues.
 
 ### Installation
+We recommend creating a virtual environment, e.g. with [venv](https://docs.python.org/3/library/venv.html) or [anaconda3](https://anaconda.org/) before proceeding with the following installation steps.
 
-1. If on MacOS: `brew install coreutils`.
-2. Clone repository: `git clone https://github.com/agiachris/pddlgym_planners.git && cd pddlgym_planners`.
-3. (optional) Create virutal environment, e.g. with `venv` or `anaconda3`.
-4. Install repository: `pip install .`
-
+```bash
+# if on macOS
+brew install coreutils 
+# clone and install package
+git clone https://github.com/agiachris/pddlgym_planners.git
+cd ./pddlgym_planners && pip install .
+# if your virtual env does not have pddlgym
+pip install -r requirements.txt
+```
 
 ## Instructions
 
