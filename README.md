@@ -1,25 +1,28 @@
 # Planner Interface for [PDDLGym](https://github.com/tomsilver/pddlgym)
 
-**This library is under development by [Tom Silver](http://web.mit.edu/tslvr/www/) and [Rohan Chitnis](https://rohanchitnis.com/). Correspondence: <tslvr@mit.edu> and <ronuchit@mit.edu>.**
-
 This is a lightweight Python interface for using off-the-shelf classical planners like [FastForward](https://fai.cs.uni-saarland.de/hoffmann/ff.html) and [FastDownward](http://www.fast-downward.org/ObtainingAndRunningFastDownward) with [PDDLGym](https://github.com/tomsilver/pddlgym).
 
-**Extensions to this library have been made by [Mohamed Khodeir](https://github.com/Khodeir) and [Christopher Agia](https://agiachris.github.io/) to support a broader range of satisficing and optimal symbolic planners encapsulated in a pip-installable package. Correspondance: <m.khodeir@mail.utoronto.ca> and <cagia@stanford.edu>.**
 
-## System Requirements
+This library is **under development** by [Tom Silver](http://web.mit.edu/tslvr/www/) and [Rohan Chitnis](https://rohanchitnis.com/). **Extensions to this library** have been made by [Mohamed Khodeir](https://github.com/Khodeir) and [Christopher Agia](https://www.chrisagia.com/) to support a broader range of satisficing and optimal symbolic planners encapsulated in a pip-installable package. Correspondance: <tslvr@mit.edu> and <ronuchit@mit.edu>, <m.khodeir@mail.utoronto.ca> and <cagia@stanford.edu>.
+
+
+## Setup
+
+### System Requirements
 
 This repository has been mostly tested on MacOS Mojave and Catalina with Python 3.6. We would like to make it accessible on more systems; please let us know if you try another and run into any issues.
 
-## Installation
+### Installation
 
-1. If on MacOS, `brew install coreutils`.
-2. Install docker.
-3. Clone this repository. `git clone https://github.com/agiachris/pddlgym_planners.git && cd pddlgym_planners`.
-4. (option a) Create a virtual env, e.g., with conda: `conda env create -f environment.yaml`.
-5. (option b) Install [PDDLGym](https://github.com/tomsilver/pddlgym) and `pip install pddlgym_planners/tarski`.
-5. Install this repository; `pip install .`.
+1. If on MacOS: `brew install coreutils`.
+2. Clone repository: `git clone https://github.com/agiachris/pddlgym_planners.git && cd pddlgym_planners`.
+3. (optional) Create virutal environment, e.g. with `venv` or `anaconda3`.
+4. Install repository: `pip install .`
 
-## Example Usage
+
+## Instructions
+
+### Basic Usage
 
 **Important Note:** When you invoke a planner for the first time, the respective external package will be installed automatically. This will take up to a few minutes. This step will be skipped the next time you run the same planner.
 
@@ -50,10 +53,9 @@ print("Plan:", lama_first_planner(env.domain, state))
 print("Statistics:", lama_first_planner.get_statistics())
 ```
 
-## Extended Usage
+### Extended Usage
 
 Upon importing this package in your python script, you'll have easy access to both satisficing and optimal planners through the `pddlgym_planners.PlannerHandler` object; a dictionary hashing a planner name to its corresponding [PDDLPlanner](https://github.com/agiachris/pddlgym_planners/blob/master/pddlgym_planners/pddl_planner.py#L17) object. You may also directly import a planner with `get_planner` should you know its name and alias. All necessary dependencies are auto-installed for planners being used the first time. 
-
 
 ```python 
 # pyexample.py script
